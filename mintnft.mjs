@@ -5,11 +5,39 @@ import readline from 'readline-sync';
 config();
 
 // ========================================
-// CONFIGURATION
+// CONFIGURATION & VALIDATION
 // ========================================
+
+// Validate environment variables
+function validateConfig() {
+    if (!process.env.RPC_URL) {
+        throw new Error('❌ RPC_URL not found in .env file');
+    }
+    if (!process.env.PRIVATE_KEY) {
+        throw new Error('❌ PRIVATE_KEY not found in .env file');
+    }
+    
+    let privateKey = process.env.PRIVATE_KEY.trim();
+    
+    // Add 0x prefix if missing
+    if (!privateKey.startsWith('0x')) {
+        privateKey = '0x' + privateKey;
+        log('✅ Added 0x prefix to private key', 'info');
+    }
+    
+    // Validate private key length
+    if (privateKey.length !== 66) {
+        throw new Error('❌ Invalid private key length. Should be 64 characters + 0x prefix');
+    }
+    
+    return privateKey;
+}
+
+const validPrivateKey = validateConfig();
+
 const CONFIG = {
     provider: new JsonRpcProvider(process.env.RPC_URL),
-    wallet: new Wallet(process.env.PRIVATE_KEY, new JsonRpcProvider(process.env.RPC_URL)),
+    wallet: new Wallet(validPrivateKey, new JsonRpcProvider(process.env.RPC_URL)),
     contractAddress: readline.question('Enter contract address: ').trim(),
     gasPrice: "0.1", // gwei
     gasLimit: 350000,
@@ -22,7 +50,7 @@ const CONFIG = {
 // UTILITIES
 // ========================================
 const log = (msg, type = 'info') => {
-    const icons = { info: '🔄', success: '✅', error: '❌', warn: '⚠️', gas: '⛽', link: '🔍' };
+    const icons = { info: '🔄', success: '✅', error: '❌', warn: '⚠️ ', gas: '⛽', link: '🔍' };
     console.log(`[${new Date().toLocaleTimeString()}] ${icons[type]} ${msg}`);
 };
 
@@ -166,6 +194,21 @@ class NFTClaimBot {
             log('🚀 Starting NFT Claim Bot...', 'info');
             log(`👤 Wallet: ${this.config.wallet.address}`, 'info');
             log(`🎯 Contract: ${this.config.contractAddress}`, 'info');
+
+            // Validate contract address
+            if (!this.config.contractAddress || this.config.contractAddress.length !== 42) {
+                log('❌ Invalid contract address format', 'error');
+                return;
+            }
+
+            // Check wallet connection
+            try {
+                await this.config.provider.getNetwork();
+                log('✅ Connected to network', 'success');
+            } catch (error) {
+                log('❌ Network connection failed', 'error');
+                return;
+            }
 
             // Check balance
             if (!(await this.checkBalance())) {
