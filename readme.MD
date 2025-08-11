@@ -15,7 +15,7 @@ Bot otomatis untuk mengklaim NFT gratis dengan berbagai metode claim yang berbed
 
 ### 1. Clone/Download Project
 ```bash
-git clone <repository-url>
+git clone https://github.com/dickifatma/Rarible-Auto-Mint-NFT
 cd Rarible-Auto-Mint-NFT
 ```
 
